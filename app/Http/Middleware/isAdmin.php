@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class isAdmin
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,6 @@ class isAdmin
     public function handle(Request $request, Closure $next)
     {
         if(auth()->user()->type != 'admin') return response()->json('This is admin area. Go away :) (or just change user type to admin)', 401);
-        
         return $next($request);
     }
 }
